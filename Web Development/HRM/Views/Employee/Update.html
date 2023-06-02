@@ -1,0 +1,24 @@
+[HttpPost]
+public IActionResult Edit(Employee editedEmployee)
+{
+    // Find the existing employee in the list based on the ID
+    var existingEmployee = employees.FirstOrDefault(e => e.Id == editedEmployee.Id);
+
+    if (existingEmployee == null)
+    {
+        // Handle the case when the employee is not found
+        return NotFound();
+    }
+
+    // Update the properties of the existing employee with the edited values
+    existingEmployee.Name = editedEmployee.Name;
+    existingEmployee.Address = editedEmployee.Address;
+    existingEmployee.Email = editedEmployee.Email;
+    existingEmployee.Phone = editedEmployee.Phone;
+    existingEmployee.Gender = editedEmployee.Gender;
+    existingEmployee.Dob = editedEmployee.Dob;
+    existingEmployee.JoinDate = editedEmployee.JoinDate;
+
+    // Redirect to the employee list or another appropriate view
+    return RedirectToAction("Index");
+}

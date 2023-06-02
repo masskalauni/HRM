@@ -1,0 +1,44 @@
+﻿@model HRM.Models.Department
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Department</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Department Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Description</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Established" class="control-label">Established Date</label>
+                <input asp-for="Established" class="form-control" type="date" />
+                <span asp-validation-for="Established" class="text-danger"></span>
+            </div><br>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create</button> |
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+   
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

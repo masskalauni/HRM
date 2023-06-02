@@ -1,0 +1,80 @@
+﻿@model Employee
+<div class="main">
+    <h2>Update Employee Details</h2>
+</div>
+<style>
+    h2 {
+        color: white;
+        margin: 10px 0px 0px 350px;
+    }
+
+    .main {
+        height: 45px;
+        background-color: black;
+        width: 100%;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        border-radius: 10px;
+    }
+
+    .form-select {
+        border-radius: 10px;
+    }
+
+    .btn-primary {
+        border-radius: 10px;
+    }
+</style>
+<form class="row g-3" action="/employee/Edit" method="post">
+    <input asp-for="Id" type="hidden" />
+    <div class="col-md-6">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Address" class="form-label"></label>
+        <input asp-for="Address" class="form-control">
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Phone" class="form-label"></label>
+        <input asp-for="Phone" class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control">
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for=Gender class="form-label"></label>
+        <select class="form-select" asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()">
+
+        </select>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for=Dob class="form-label"></label>
+        <input asp-for="Dob" class="form-control">
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for=JoinDate class="form-label"></label>
+        <input asp-for=JoinDate class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label asp-for=DesignationId class="form-label"></label>
+        <select class="form-select" asp-for="DesignationId" asp-items="@ViewData["DesignationList"] as IEnumerable <SelectListItem>">
+           
+
+    </select>
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary w-100 mt-3">Update</button>
+    </div>
+</form>
